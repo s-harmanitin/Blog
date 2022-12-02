@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+
+<style>
+    .cont{
+        color: black;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background: transparent;
+        
+        background-position: center;
+        align-items: center;  
+    }
+    .cont h1{
+        font-family: "Tangerine", serif;
+        font-weight: 700;
+    }
+   
+</style>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="container-fluid cont">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <center><h1>Create Blog</h1></center>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-new">
+                {{ form.heading | as_crispy_field }}
+            </div>
+           
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-12">
+                {{ form.image | as_crispy_field }}
+            </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-12">
+                {{ form.tag | as_crispy_field }}
+            </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-12">
+                {{ form.desc | as_crispy_field }}
+            </div>
+            
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-6">
+                {{ form.upload_on | as_crispy_field }}
+            </div>
+            <div class="col-lg-6">
+                {{ form.upload_by | as_crispy_field }}
+            </div>
+            
+        </div>
+       
+           
+         
+    <button type="submit" class="btn btn-danger btn-lg btn-block">Save Data</button>
+            
+        
+    </div>
+
+
+
+
+
+
+</form>
+{% endblock %}
+
+
+
+
+

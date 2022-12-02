@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<style>
+  @media screen and (min-width: 320px) and (max-width: 520px){
+    .new_img img{
+      margin-left: 10px;
+    }
+    .check-box{
+      width: 10%;
+    }
+    .new_box{
+      width: 50%;
+      margin-left: 40px;
+    }
+  }
+
+
+
+
+    .main_row{
+        color: rgb(247, 96, 41);
+        font-family: 'Roboto',sans-serif;  
+        background: transparent;
+    }
+    .main_row h1{
+        font-size: 25px;
+        font-weight: 800;
+        transition: 1s;
+    }
+    .main_row:hover h1{
+        
+        color: rgb(247, 96, 41);
+        border-radius: 5px;
+        transform: scale(1.1);
+    }
+    .btn-01{
+        border: none;
+        background-color: rgb(233, 220, 220)202, 197, 197;
+        color: rgb(85, 83, 83);
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        transition: 1s;
+    }
+    .btn-01:hover{
+        border:  1px solid white;
+        background-color: rgb(85, 83, 83);
+        color: white;
+        box-shadow: 1px 4px 4px rgb(85, 83, 83);
+    }
+    .new_row{
+        color: rgb(85, 83, 83);
+        font-size: 15px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+    }
+    .new_sec label{
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        background-color: rgb(233, 220, 220)202, 197, 197;
+        color: rgb(85, 83, 83);
+    }
+    .input_box{
+        background-color: rgba(226, 223, 223, 0.815);
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        width: 100%;
+    }
+    .btn-02{
+        border: none;
+        background-color: rgb(247, 96, 41);
+        color: white;
+        font-size: 14px;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 700;
+        height: 40px;
+        width: 100%;
+        border-radius: 5px;
+        transition: 1s;
+    }
+    .btn-02:hover{
+        border:  1px solid rgb(247, 96, 41);
+        background-color: white;
+        color: rgb(247, 96, 41);
+        box-shadow: 4px 4px 4px rgb(247, 96, 41);
+    }
+    .new_box{
+        height: 10px;
+        width: 80%;
+        background-color: rgb(207, 204, 204);
+        margin-top: -17px;
+        margin-left: 40px;
+    }
+    .new_img img{
+        border-radius: 5px;
+
+    }
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-5 new_img">
+            <img src="{% static 'signup.webp' %}"  class=" img-fluid" height="550px">
+          </div>
+          <div class="col-lg-4 main_row">
+            <center><h1>Sign Up</h1></center>
+            <div class="row">
+              <div class="col-lg-12">
+                <center><a href="{% url 'login' %}"><button type="button" class="btn-01">Sign up with Google</button></a></center>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 new_row"><hr></div>
+              <div class="col-lg-2 new_row"><center>Or</center></div>
+              <div class="col-lg-5"><hr></div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 new_sec">
+                <label>First Name</label>
+                <input type="text" name="first_name" placeholder="" required class="input_box">
+              </div>
+              <div class="col-lg-1"></div>
+              <div class="col-lg-5 new_sec">
+                <label>Last Name</label>
+                <input type="text" name="last_name" placeholder="" required class="input_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-12 new_sec">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="" required class="input_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-12 new_sec">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="" required class="input_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-12 new_sec">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="" required class="input_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-12 new_sec">
+                <label>Confirm Password</label>
+                <input type="password" name="password1" placeholder="" required class="input_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-2 col-lg-6 col-sm-2">
+                <input type="checkbox" class="check-box" required>
+              </div>
+              <div class="col-lg-10 col-md-6 col-sm-3 new_box">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+                <center><a href="#"><button type="submit" class="btn-02">Create Account</button></a></center>
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 main">
+                    {% for msg in messages %}
+                    {{msg}}
+                  
+                    {% endfor %}
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
+      </div>
+
+  </form>
+{% endblock %}

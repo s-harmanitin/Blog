@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+ 
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="styleshet" href="fig.css">
+    <title>The Back</title>
+    
+    <style>
+        @media screen and (min-width: 320px) and (max-width: 520px){
+            .card{
+              margin: 0;
+              padding: 0;
+            }
+            .web img{
+                height: 100px;
+            }
+            .the_cont{
+                margin: 0;
+                padding: 0;
+            }
+            .new_col{
+                display: table;
+                margin: auto;
+            }
+            
+          }
+          @media screen and (min-width: 520px) and (max-width: 1000px){
+            
+            }
+        .new_cont{
+            
+            background-image: linear-gradient(to bottom ,rgb(107, 107, 107) ,rgb(81, 79, 79));
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            background-position: center;
+            
+        }
+        
+        .thd_row h1{
+            margin-left: 80px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 400;
+            margin-top: 50px;
+            color: white;
+        }
+        .fr_row{
+            margin-left: 80px;
+            
+        }
+        .fr_row ul li{
+            float: left;
+            background-position: bottom;
+            padding: 10px;
+            font-size: 25px;
+            display: block;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding-left: 10px;
+            margin-left: 5px;
+            height: 60px;
+            width: 60px;
+            text-align: center;
+            color: white;
+            transition: 1s;
+            
+        }
+        .fr_row ul li:hover{
+            background-color: white;
+            opacity: 0.2;
+            color: black;
+        }
+        .jaani{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            
+        }
+        .btn-01{
+            height: 40px;
+            width: 180px;
+            border-radius: 20px;
+            background-image: linear-gradient(to right,rgb(101, 199, 238),rgb(108, 172, 237),rgb(245, 83, 164),rgb(213, 24, 106));
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            font-family:  "Roboto", sans-serif;
+            
+
+        }
+        .fr_row label{
+            
+            background-position: bottom;
+            padding: 10px;
+            font-size: 25px;
+        }
+        .row_set{
+            float: left;
+            font-size: 20px;
+            margin-left: 60px;
+        }
+        
+        
+        .row_set ul li{
+            display: block;
+            color: white;
+            background-color: black;
+            
+        }
+        .new_col{
+            background-color: black;
+            
+        }
+        .new_col ul li{
+            display: block;
+            color: rgb(150, 144, 144);
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: -25px;
+            line-height: 30px;
+        }
+        .new_col h3{
+            font-size: 18px;
+            color: rgb(150, 144, 144);
+            line-height: 30px;
+
+        }
+        .new_col h1{
+            font-size: 25px;
+            color: rgb(51, 50, 50);
+            font-weight: 700;
+            text-align: left;
+        }
+        .row_set p{
+            color: white;
+            font-weight: 700;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .row_set h1{
+            color: white;
+            font-weight: 700;
+        }
+        
+      
+    </style>
+  </head>
+  <body>
+    
+    
+
+    <div class="container-fluid jaani">
+        <div class="row new_cont">
+           
+            <div class="container">
+                <div class="row thd_row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <h1>Make Your Blog Awesome</h1>
+                    </div>
+                    
+                </div>
+            </div>
+           
+            <div class="container">
+                <div class="row row_set">
+                    
+                    <div class="col-lg-4">
+                        <h1>About us</h1>
+                        <p>
+                            Omninos Solutions is a top-rated website and mobile app (Android/iOS) marketing firm with over 500 projects completed.
+                            The application development team gained excellent practical experience as well as in-depth technical skills in order to create business-centric B2B and B2C mobile apps that help businesses stay ahead of the competition.
+                            High-quality mobile app design, development, testing, and deployment at each stage of the mobile app development lifecycle. Our primary goal is to develop digital products that promote interaction and success.
+                            We offer excellent services as well as long-term customer support.
+                            </p>
+                    </div>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-5 web">
+                        <img src="{% static 'web_developer.png' %}" height="400px" >
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row fr_row">
+                    <ul>
+                       <a href="https://www.facebook.com/sharmanitin4707"><li><ion-icon name="logo-facebook"></ion-icon></li>
+                       <a href="https://www.instagram.com/_sharma_nitin_/"> <li> <ion-icon name="logo-instagram"></ion-icon></li></a>
+                        <li><ion-icon name="call-outline"></ion-icon></li>
+                    </ul>
+                </div>
+                <div class="row fr_row">
+                    <ul>
+                        <a href="https://twitter.com/i/flow/login"><li><ion-icon name="logo-twitter"></ion-icon></li></a>
+                        <a href="https://in.linkedin.com/"><li><ion-icon name="logo-linkedin"></ion-icon></li></a> 
+                        <a href="https://www.google.co.in/"><li><ion-icon name="logo-google"></ion-icon></li></a>
+                    </ul>
+                </div>
+            </div>
+            <div class="container the_cont">
+                <div class="row ">
+                    <div class="col-lg-1 new_col"></div>
+                    <div class="col-lg-3 new_col">
+                        <h1>Menu</h1>
+                        <ul>
+                            <a href="{% url 'home' %}"><li>Home</li></a>
+                            <a href="{% url 'create' %}"><li>Create blog</li></a>
+                            <a href="{% url 'first' %}"><li>About</li></a>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 new_col">
+                        <h1>Address</h1>
+                        <h3>Omninos Solutions</h3>
+                        <h3>SCO 37,sector 118 ,TDI city,</h3>
+                        <h3>SAS Nagar, Punjab 160055</h3>
+                        <h3>Sales & Support - +919988880293</h3>
+                        <h3>info@omninos.com</h3>
+                    </div>
+                    <div class="col-lg-4 new_col">
+                        <h1>About</h1>
+                        <h3>Disclaimer: Omninos solution neither represents the trademarks of Amazon. TikTok and Gojek. We use
+                            <br> the terms Amazon and Gojek for a better 
+                            <br>
+                            understanding of our services. Our offerings intend 
+                            <br> no harm to any organization or individual.</h3>
+                    </div>
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+
+
+
+
+
+
+
+{% endblock %}  

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+    @media screen and (min-width: 320px) and (max-width: 520px){
+    
+        .main_light img{
+            height: 300px;
+            
+            filter: blur(5px);
+           
+        }.main_light{
+            height: 100px;
+            
+        }
+        .container{
+            height: 200px;
+        }
+    }
+    
+    .main_dark h2{
+        font-weight: 700;
+        box-shadow: 3px 4px 4px rgb(68, 66, 65);
+        transition: 1s;
+        font-size: 30px;
+    }
+    .main_dark:hover h2{
+        
+        transform: scale(1.1);
+    }
+    .main_dark{ 
+        text-align: center;
+        align-items: center;
+        
+        background: transparent;
+        color: rgb(52, 49, 48);
+        
+    }
+    .main_dark small{
+        font-weight: 700;
+        font-family: 'Roboto',sans-serif;
+        font-size: 15px;
+    }
+    
+    .main_row{
+        background: white;
+       
+    }
+    .btn-01{
+        height: 40px;
+        width: 150px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: 'Roboto',sans-serif;
+        border: none;
+        background-color:rgb(65, 184, 107);
+        color: white;
+        border-radius: 10px;
+        transition: 1s;
+        box-shadow: 3px 4px 4px white;
+    }
+    .btn-01:hover{
+        background-color: white;
+        color: rgb(88, 83, 81);
+        border: 0.5px solid rgb(54, 53, 52);
+    }
+    .bottom_input{
+        box-shadow: 4px 4px 4px rgb(84, 74, 71);
+        border: none;
+        border-bottom: 1px solid black;
+        border-radius: 5px;
+        height: 30px;
+    }
+    .main_dark h5{
+        font-size: 15px;
+        font-weight: 400;
+        font-family: 'Roboto',sans-serif;
+        
+    }
+</style>
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 col-md-6 col-sm-12"></div>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+                <div class="row main_row">
+                    
+                    <div class="col-lg-6 col-md-6 col-sm-3 main_light">
+                        <img src="{% static 'sign-up.webp' %}" height="500px">
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 main_dark">
+
+                        <center><h2>Login Account</h2></center>
+                        <small>Login to your Account</small>
+                        <br>
+                        <br>
+
+                      
+                      
+                        <h5> <input type="text"  class="bottom_input" name = 'username' placeholder="Username">
+                        <br>
+                        <br>
+                        
+                        <h5><input type="password" name="password" value=""  placeholder="Passowrd" class="bottom_input"></h5>
+                        <br>
+                        <button type="submit" class="btn-01">Login</button>
+                        <br>
+                        <br>
+                        <a href="{% url 'register' %}">  <button type="button" class="btn-01">Register Account</button></a>
+                        <br>
+                        <br>
+                        <a href="{% url 'reset_password' %}">  <button type="button" class="btn-01">Forget password?</button></a>
+                        <br>
+                        <small>{% for msg in messages %}
+                            {{msg}}
+                          
+                            {% endfor %}</small>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-1 col-md-6 col-sm-12"></div>
+        </div>
+    </div>
+
+    
+</form>
+
+
+  
+
+
+{% endblock %}

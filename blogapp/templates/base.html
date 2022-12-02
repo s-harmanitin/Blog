@@ -1,0 +1,181 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+      <style>
+        @media screen and (min-width: 320px) and (max-width: 520px){
+        }
+         
+          .social-media i{
+          margin-left:1rem;
+          color: rgb(190, 9, 9);
+          border-radius: 40px;
+          }
+          .social-media i:hover{
+            color: rgb(132, 169, 226);
+          }
+
+          .jumbotron {
+              background-image: linear-gradient(to bottom,rgb(255, 255, 255),rgba(255, 255, 255, 0.56));
+              background-size: cover;
+              background-repeat: no-repeat;  
+          }
+          .new_nav li{
+            font-size: 100px;
+          }
+          .icn{
+            font-size: 30px;
+            color: rgb(55, 54, 54);
+            border: 2px solid rgb(55, 54, 54);
+            border-radius: 50%;
+            font-weight: 700;
+          }
+          
+         
+
+
+          .w3-tangerine {
+           font-family: "Tangerine", serif;
+           text-shadow: 2px 2px 5px tomato;
+            }
+            .navbar{
+              font-size: 700;
+              font-family: "Rubik", Sans-serif;
+              font-size: 17px;
+              background: transparent;
+              margin-top: -30px;
+              background: transparent;
+              width: 100%; 
+            }
+            .navbar ul li{
+              font-weight: 400;
+              border-radius: 1px;
+              transition: 1s;
+              font-size: 1.4rem;
+              display: block;
+             
+              
+            }
+           
+        
+  
+         
+         
+          
+          
+            
+            
+           
+            
+      </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+      <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Kanit:wght@700&family=Quicksand:wght@300&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="jumbotron">
+
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <image src="{% static 'Omninoslogo.png' %}" height='50px'>
+          
+          &nbsp;&nbsp;&nbsp;
+        <a class="navbar-brand nav" href="{% url 'profile' %}">{{user.first_name| title}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+           
+            {% if user.is_authenticated %}
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'create' %}">Create Blog <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'first' %}">About</a>
+            </li>
+            {% else %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign up
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                <div class="dropdown-divider"></div>
+                
+              </div>
+            </li>
+          
+            {% endif %}
+          </ul>
+        <form class="form-inline my-2 my-lg-0" method="post">
+          {% csrf_token %}
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='inp_search'>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav new_nav">
+            <li class="nav-item">
+              
+              <a class="nav-link" href="{% url 'logout' %}"><ion-icon name="log-out-outline" class="icn"></ion-icon> </a>
+            </li>
+          </ul>
+        
+          {% endif %}
+        </div>
+      </nav>
+
+      
+      <div class="row">
+        <div class=" col-lg-12 col-md-6 col-sm-12 tron" style="margin: 0 auto; display: block;">
+        
+          {% block content %}
+        {% endblock %}
+        </div>
+      </div>
+
+
+
+
+
+
+
+    
+      <div class="container">
+        <div class="col-lg-8" style="margin: 0 auto; display: block;">
+      {% block card %}
+      {% endblock %}
+        </div>
+      </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+      AOS.init();
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
