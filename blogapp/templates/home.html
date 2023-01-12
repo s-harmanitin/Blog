@@ -81,42 +81,9 @@
 
 
 
-<div class="container cont">
-  <div class="row">
-    {% for i in filterdata %}
-    <div class="col-lg-4 col-md-6 col-sm-12"> 
-      <div class="card">
-        <img class="img-top" src="{{i.image.url}}" alt="Card image cap" height="200px">
-        <div class="card-body">
-          <h5 class="card-title">{{i.heading | title}}</h5>
-          <h6 class="card-text">{{i.tag}}</h6>
-          <p class="card-text">{{i.desc | title|safe|striptags|truncatechars:150}}</p>
-          <a href="{% url 'readmore' i.id %}" class="btn btn-danger btn-01">show More</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</div>
 
 
 
-<div class="container cont">
-  <div class="row">
-    <h1>Food</h1>
-    {% for i in fdata %}
-    <div class="col-lg-4 col-md-6 col-sm-12"> 
-      <div class="card">
-        <img class="img-top" src="{{i.image.url}}" alt="Card image cap" height="200px">
-        <div class="card-body">
-          <h5 class="card-title">{{i.heading | title}}</h5>
-          <h6 class="card-text">{{i.tag}}</h6>
-          <p class="card-text">{{i.desc | title|safe|striptags|truncatechars:150}}</p>
-          <a href="{% url 'readmore' i.id %}" class="btn btn-danger btn-01">show More</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</div>
+
+
 {% endblock %}

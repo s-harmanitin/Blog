@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+    <div class="row">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} <input type="text" class="form-control" name="name" placeholder="Enter Fullname" required> {% endcomment %}
+        <input type="file" class="form-control" name="profileimage" placeholder="" required>
+        <input type="tel" class="form-control" name="phonenumber" placeholder="Enter Phone Number" required>
+        <button type="submit" class="btn-danger">submit</button>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

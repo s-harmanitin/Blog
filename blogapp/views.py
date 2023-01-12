@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import blog,tag
+from .models import blog,userdetails
 from .forms import blogform
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
@@ -137,10 +137,31 @@ def first(request):
 
 
 def profile(request):
-    a = blog.objects.filter(upload_by= 'nitin sharma')
-    return render(request,'profile.html',{'form_a':a})
+    if request.user.is_authenticated:
+        if userdetails.objects.filter(name__exact = request.user).exists():
+            a = blog.objects.filter(upload_by = request.user)
+            b = userdetails.objects.get(name__exact = request.user)
+            return render(request,'profile.html',{'form_a':a,'b':b})
+        else:
+            return redirect('adduserdata')
+    else:
+        return redirect('login')
+        
 
-
+def adduserdata(request):
+    if request.user.is_authenticated:
+        if userdetails.objects.filter(name__exact = request.user).exists():
+            return redirect('profile')
+        else:
+            if request.method == "POST":
+                name = request.user
+                profileimage = request.FILES['profileimage']
+                phonenumber = request.POST['phonenumber']
+                
+                userdata = userdetails(name=name,profileimage=profileimage,phonenumber=phonenumber)
+                userdata.save()
+                return redirect('profile')
+            return render(request,'adduserprofile.html')
 
 '''
 

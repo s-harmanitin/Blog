@@ -10,7 +10,6 @@
         font-size: 18px;
         font-family: Georgia, 'Times New Roman', Times, serif;
         background: transparent;
-        
         background-position: center;
         align-items: center;  
     }
@@ -22,7 +21,6 @@
 </style>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-
     <div class="container-fluid cont">
         <div class="row">
             <div class="col-lg-4"></div>
@@ -76,13 +74,25 @@
         
     </div>
 
+<script>
+    let uploadby = document.getElementById("id_upload_by")
+    uploadby.style.display = "none";
+    
+    let username = '{{user}}'
 
+    document.getElementById("id_upload_by").value = username
+
+    console.log(uploadby)
+
+
+</script>
 
 
 
 
 </form>
 {% endblock %}
+
 
 
 

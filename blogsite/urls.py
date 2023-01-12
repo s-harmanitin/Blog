@@ -41,6 +41,7 @@ urlpatterns = [
     path('search',views.search,name='search'),
     path('page1',views.first,name='first'),
     path('profile',views.profile,name='profile'),
+    path('adduserdetails',views.adduserdata,name="adduserdata")
 
    
 

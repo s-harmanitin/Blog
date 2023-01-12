@@ -87,7 +87,9 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-3"> <small class="text-muted">{{readmore.datefield}}</small></div>
           </div>
-          {% if user.is_authenticated %}
+          
+         
+          {% if user.username == readmore.upload_by or user.is_superuser %}
           
           <div class="card-body">
             <a href="{% url 'update' readmore.id %}">
@@ -97,6 +99,7 @@
                 <button type="button" class="btn btn-outline-primary">Delete</button>
             </a>
         </div>
+        
         {% endif %}
         
     

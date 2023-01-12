@@ -76,7 +76,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                       <div class="card h-100">
-                        <img src="{% static 'sun.jpg' %}" class="card-img-top img" alt="...">
+                        <img src="{{b.profileimage.url}}" class="card-img-top img" alt="...">
                         <div class="card-body cd-bd">
                             {% if user.is_authenticated %}
                           <h1 class="card-title">{{user.first_name| title}} {{user.last_name | title}}</h1>
@@ -98,22 +98,6 @@
             {% endif %}
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <div class="container-fluid ">
             <div class="row">
