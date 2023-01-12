@@ -2,7 +2,7 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 # from phonenumber_field.modelfields import PhoneNumberField
-from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import AbstractUser
 
     
 class tag(models.Model):
