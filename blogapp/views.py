@@ -121,11 +121,8 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        global username
         username = request.POST['username']
         password = request.POST['password']
-
-
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
