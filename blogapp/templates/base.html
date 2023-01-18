@@ -3,6 +3,12 @@
 <html lang="en">
   <head>
       <style>
+        body{
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+        }
         @media screen and (min-width: 320px) and (max-width: 520px){
         }
          
@@ -15,10 +21,15 @@
             color: rgb(132, 169, 226);
           }
 
-          .jumbotron {
+          .jumbotron{
               background-image: linear-gradient(to bottom,rgb(255, 255, 255),rgba(255, 255, 255, 0.56));
               background-size: cover;
               background-repeat: no-repeat;  
+              top: 0px;
+              left: 0px;
+              right: 0px;
+              bottom: 0px;
+              height: 10px;
           }
           .new_nav li{
             font-size: 100px;
@@ -30,10 +41,6 @@
             border-radius: 50%;
             font-weight: 700;
           }
-          
-         
-
-
           .w3-tangerine {
            font-family: "Tangerine", serif;
            text-shadow: 2px 2px 5px tomato;
@@ -53,26 +60,26 @@
               transition: 1s;
               font-size: 1.4rem;
               display: block;
-             
+            } 
+            #usericon{
+              list-style-type: none;
+              border: 1px solid green;
+              border-radius: 50%;
+              height: 30px;
+              width: 30px;
+              justify-content: center;
+              place-items: center;
+              text-align: center;
               
-            }
-           
-        
-  
-         
-         
-          
-          
-            
-            
-           
-            
+            }   
       </style>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <title>Blog Site</title>
+    <link rel="icon" href="https://www.nike.com/android-icon-192x192.png">
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
       <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -85,7 +92,7 @@
 
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <image src="{% static 'Omninoslogo.png' %}" height='50px'>
+        <img src="{% static 'Omninoslogo.png' %}" height='50px'>
           
           &nbsp;&nbsp;&nbsp;
         <a class="navbar-brand nav" href="{% url 'profile' %}">{{user.first_name| title}}</a>
@@ -103,6 +110,9 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="{% url 'create' %}">Create Blog <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'category' %}">Category <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'first' %}">About</a>
@@ -128,6 +138,10 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='inp_search'>
             <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
           </form>
+          
+          
+            
+          
         
           &nbsp;&nbsp;&nbsp;&nbsp;
           {% if user.is_authenticated %}
@@ -150,20 +164,17 @@
         {% endblock %}
         </div>
       </div>
-
-
-
-
-
-
-
-    
+      
       <div class="container">
         <div class="col-lg-8" style="margin: 0 auto; display: block;">
       {% block card %}
       {% endblock %}
         </div>
       </div>
+</div>
+<div class="container-fluid pro">
+  {% block pro %}
+  {% endblock %}
 </div>
 
     <!-- Optional JavaScript -->

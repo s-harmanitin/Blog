@@ -1,0 +1,40 @@
+
+{% block content %}
+{% load static %}
+<style>
+    #btnpage{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
+    .current{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: rgb(121, 121, 121);
+    }
+</style>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<div class="container p-4">
+    <div class="pagination justify-content-center">
+        <span class="step-links">
+          {% if read_data.has_previous %}
+              <a href="?page=1" class="btn btn-outline-danger"> <ion-icon name="chevron-back-outline" id="btnpage" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Previous Page"></ion-icon></a>
+              <a href="?page={{ read_data.previous_page_number }}" class="btn btn-outline-danger" id="btnpage"><ion-icon name="play-back-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="First Page"></ion-icon></a>
+          {% endif %}
+
+            <span class="current">
+                Page {{ read_data.number }} of {{ read_data.paginator.num_pages }}
+            </span>
+
+          {% if read_data.has_next %}
+              <a href="?page={{ read_data.next_page_number }}" class="btn btn-outline-danger"  id="btnpage" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Next Page"><ion-icon name="play-forward-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Next Page"></ion-icon></a>
+              <a href="?page={{ read_data.paginator.num_pages }}" class="btn btn-outline-danger" id="btnpage" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Last Page"><ion-icon name="chevron-forward-outline"></ion-icon></a>
+          {% endif %}
+        </span>
+        </div>
+</div>
+
+{% endblock %}

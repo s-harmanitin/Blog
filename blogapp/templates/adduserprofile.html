@@ -3,17 +3,148 @@
 {% load static %}
 
 
-<div class="container">
-    <div class="row">
+<style>
+  
+  .form-control{
+    gap: 10px;
+    margin: auto;
+    
+  }
+  label{
+    font-size: 1.3rem;
+    font-weight: 500;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(121, 121, 121);
+
+    
+  }
+  .formdiv{
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    border: 1px solid rgb(75, 75, 75);
+    height: 400px;
+    width: 900px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 3px 2px 2px rgb(118, 117, 117);
+    backdrop-filter: blur(10px);
+    background: transparent;
+    
+  }
+  h5{
+    font-size: 1.6rem;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(58, 58, 58);
+    word-spacing: 1px;
+    letter-spacing: -1px;
+  }
+  form hr{
+    background-color: black;
+  }
+  .btn-adduserdetails{
+    height: 40px;
+    width: 180px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(79, 78, 78);
+    border: none;
+    transition: 0.6s;
+    position: absolute;
+    z-index: -1;
+  }
+  .btn-adduserdetails:hover{
+    background-color: rgb(16, 232, 16);
+    color: white;
+
+  }
+  
+  .alert{
+    display: none;
+    
+    z-index: 1;
+    
+    
+  }
+  #btn{
+   
+    z-index: -1;
+   
+  }
+</style>
+
+<!--  -->
+<div class="container-fluid">
+  <div class="formdiv">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {% comment %} <input type="text" class="form-control" name="name" placeholder="Enter Fullname" required> {% endcomment %}
-        <input type="file" class="form-control" name="profileimage" placeholder="" required>
-        <input type="tel" class="form-control" name="phonenumber" placeholder="Enter Phone Number" required>
-        <button type="submit" class="btn-danger">submit</button>
+        <h5>Add/Update Profile Details</h5>
+        
+        <hr>
+        {% comment %} <input type="text" class="form-control" name="name" placeholder="Enter Fullname" > {% endcomment %}
+        <label for="#imagecontrol">Enter Profile Image</label>
+        <input type="file" class="form-control"  id="imagecontrol" name="profileimage" placeholder="" {{i.image}} required>
+        <br>
+        <label for="#phonenumber">Enter phone Number</label>
+        <input type="tel" class="form-control" id="phonenumber" name="phonenumber" placeholder="Enter Phone Number" required>
+        <small>
+          <div class="alert alert-danger alert-dismissible" id="alert" role="alert">
+            <div class="center-v">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle-fill me-2" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              The number you entered is Invalid.
+            </div>
+            <hr>
+            <p class="mb-0 small opacity-70">Number can only contains 10 digits.</p>
+          </div>
+        </small>
+        <br>
+        <button type="submit" class="btn-adduserdetails" id="btn" onmouseover="myFunction()">submit</button>
+        
       </form>
-    </div>
   </div>
+</div>
+<script>
+  
+  
+
+
+  
+  
+  function myFunction(){
+  let number = document.getElementById("phonenumber").value;
+  function alert1(){
+    let alt = document.getElementById("alert")
+    alt.style.display = "block"
+    
+  }
+  function alert2(){
+    let alt = document.getElementById("alert")
+    alt.style.display = "none"
+    
+  }
+
+    console.log(number)
+    if(number.length>10 || number.length<10){
+      
+      alert1()
+
+    }else{
+      alert2()
+    }
+      
+  }
+      
+    
+  
+   
+</script>
 
 
 {% endblock %}

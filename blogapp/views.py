@@ -6,6 +6,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -15,12 +17,27 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def read(request):
-    read_data = blog.objects.all()
-    # filterdata = blog.objects.filter(tag__exact=4)
-    # fildata = blog.objects.filter(tag__exact=3)
-    # fidata = blog.objects.filter(tag__exact=2)
-    # fdata = blog.objects.filter(tag__exact=1)
-    return render(request,'home.html',{'read_data':read_data})
+    if request.user.is_authenticated:
+        read_data = blog.objects.all()
+        paginator = Paginator(read_data, 6)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request,'home.html',{'read_data':page_obj})
+    else:
+        return render(request,'home.html')
+
+
+
+
+# def home(request):
+#     if request.user.is_authenticated:
+#         data = tut.objects.all()
+#         paginator = Paginator(data, 6)
+#         page_number = request.GET.get('page')
+#         page_obj = paginator.get_page(page_number)
+#         return render(request, 'home.html', {'data': page_obj})
+#     else:
+#         return render(request, 'home.html',)
 
 
 def create(request):
@@ -67,21 +84,33 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password1 = request.POST['password1']
-
-        if password == password1:
-            if User.objects.filter(username=username).exists():
-                messages.info(request,'username already exites')
-                return redirect('register')
-            elif User.objects.filter(email=email).exists():
-                messages.info(request,'Email already exist')
-                return redirect('register')
-            else:
-                user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
-                user.save()
-                return redirect('login')
-
+        if len(first_name)>10:
+            messages.info(request,'first name cannot be more than 10letters')
+            return redirect('register')
+        
+        if len(password)>5:
+            special_characters = "!@#$%^&*()-+?_=,<>./"
+            for i in special_characters:
+                if i in password:
+                    if password == password1:
+                        if User.objects.filter(username=username).exists():
+                            messages.info(request,'username already exites')
+                            return redirect('register')
+                        elif User.objects.filter(email=email).exists():
+                            messages.info(request,'Email already exist')
+                            return redirect('register')
+                        else:
+                            user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
+                            user.save()
+                            return redirect('login')
+                    else:
+                        messages.info(request,'password not matching')
+                        return redirect('register')
+                else:
+                    messages.info(request,'passwaord must contains any special charactor')
+                    return redirect('register')
         else:
-            messages.info(request,'password not matching')
+            messages.info(request,'password must be grater than 6 letters')
             return redirect('register')
 
 
@@ -159,27 +188,29 @@ def adduserdata(request):
                 phonenumber = request.POST['phonenumber']
                 
                 userdata = userdetails(name=name,profileimage=profileimage,phonenumber=phonenumber)
-                userdata.save()
+                if len(phonenumber)>10:
+                    return redirect('profile')
+                else :
+                    userdata.save()
                 return redirect('profile')
             return render(request,'adduserprofile.html')
 
-'''
-
-def procreate(request):
-    if request.method == 'GET':
-        form = profileform()
-        return render(request,'create.html',{'form':form})
-    else:
-        form = studentform(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('read')
-    return render(request,'create.html')
-'''
+def category(request):
+    catdata = blog.objects.filter(tag__exact = 6)
+    catdata1 = blog.objects.filter(tag__exact = 10)
+    catdata2 = blog.objects.filter(tag__exact = 11)
+    catdata3 = blog.objects.filter(tag__exact = 12)
+    return render(request,'cat.html',{'catdata':catdata,'catdata1':catdata1,'catdata2':catdata2,'catdata3':catdata3})
+    # return render(request,'cat.html',{'catdata':catdata},{'catdata1':catdata1},{'catdata2':catdata2},{'catdata3':catdata3})
 
 
-
-@login_required(login_url='login')
-def food(request):
-    filterdata = blog.objects.filter(tag='food')
-    return render(request,'home.html',{'filterdata':filterdata})
+def updateprofile(request,id):
+    if request.user.is_authenticated:
+        userdata = userdetails.objects.get(id=id)
+        if request.method =='POST':
+            profile = request.FILES['profileimage']
+            a = userdetails(id=id,name=userdata.name,profileimage=profile ,phonenumber=userdata.phonenumber)
+            a.save()
+            return redirect('profile')
+        return render(request,'adduserprofile.html',{'data':userdata})
+    return redirect('login')

@@ -30,6 +30,11 @@ class userdetails(models.Model):
     profileimage = CloudinaryField('image')
     phonenumber = models.PositiveIntegerField()
     
+    def __str__(self):
+        return self.name
+    
+    
+    
     
     
     

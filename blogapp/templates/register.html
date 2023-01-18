@@ -102,7 +102,28 @@
     .new_img img{
         border-radius: 5px;
 
-    } 
+    }
+    .container-modal{
+      height: 150px;
+      width: 400px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(63, 63, 63);
+      font-family: 'Roboto',sans-serif;
+      font-weight: 500;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      margin-top: -450px;
+      margin-left: -250px;
+      padding: 30px;
+      
+      border: 0.5px solid rgb(45, 45, 45);
+      border-radius: 3px;
+    }
+    
+    
 </style>
 
 
@@ -130,7 +151,7 @@
             <div class="row">
               <div class="col-lg-6 new_sec">
                 <label>First Name</label>
-                <input type="text" name="first_name" placeholder="" required class="input_box">
+                <input type="text" name="first_name"   maxlength="32" placeholder="" required class="input_box">
               </div>
               <div class="col-lg-1"></div>
               <div class="col-lg-5 new_sec">
@@ -149,7 +170,7 @@
             <div class="row">
               <div class="col-lg-12 new_sec">
                 <label>Email</label>
-                <input type="email" name="email" placeholder="" required class="input_box">
+                <input type="email" name="email" placeholder=""  required class="input_box">
               </div>
             </div>
             <br>
@@ -169,7 +190,7 @@
             <br>
             <div class="row">
               <div class="col-lg-2 col-lg-6 col-sm-2">
-                <input type="checkbox" class="check-box" required>
+                <input type="checkbox" class="check-box" >
               </div>
               <div class="col-lg-10 col-md-6 col-sm-3 new_box">
               </div>
@@ -178,12 +199,29 @@
             <div class="row">
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
-                <center><a href="#"><button type="submit" class="btn-02">Create Account</button></a></center>
+                <center><a href="#"><button type="submit"  class="btn-02">Create Account</button></a></center>
               </div>
               <div class="col-lg-3"></div>
             </div>
+            <!-- Vertically centered modal -->
+            
+            
+            {% if messages %}
+            {% for msg in messages %}
+            <div class="container-modal">
+              <hr>
+              {{msg}}
+              <hr>
+            </div>
+            
+              {% endfor %}
+                {% endif %}
+            
 
-            <div class="row">
+            
+            
+
+            <!-- <div class="row">
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4 main">
                     {% for msg in messages %}
@@ -192,7 +230,7 @@
                     {% endfor %}
                 </div>
                 <div class="col-lg-4"></div>
-            </div>
+            </div> -->
 
           </div>
           <div class="col-lg-2"></div>

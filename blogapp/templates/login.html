@@ -116,10 +116,11 @@
                         <br>
                         <a href="{% url 'reset_password' %}">  <button type="button" class="btn-01">Forget password?</button></a>
                         <br>
-                        <small>{% for msg in messages %}
+                        <div class="container-modal">
+                            <hr>
                             {{msg}}
-                          
-                            {% endfor %}</small>
+                            <hr>
+                        </div>
                     </div>
                 </div>
 

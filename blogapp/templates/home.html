@@ -16,6 +16,7 @@
     
     }
 
+    
 .header_col{
   background-image: url("{% static 'grad_back.jpg' %}");
   background-repeat: no-repeat;
@@ -33,6 +34,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: rgb(121, 121, 121);
 }
+
 .card h5{
   color: black;
   font-size: 1.3rem;
@@ -47,6 +49,7 @@
 }
 .img-top{
   width: 100%;
+  object-fit: cover;
 }
 
 </style>
@@ -77,13 +80,6 @@
     {% endfor %}
   </div>
 </div>
-
-
-
-
-
-
-
-
+{% include 'paginator.html' %}
 
 {% endblock %}
