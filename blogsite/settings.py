@@ -12,10 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from django.conf.urls.static import static
-import django_heroku
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 
 
@@ -46,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'crispy_forms',
+    'cloudinary',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -122,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -149,8 +148,10 @@ cloudinary.config(
   cloud_name = "nsshserver", 
   api_key = "128949761485349", 
   api_secret = "E7V-za5kukW-uo5YRWbhEaUNC3k",
+  api_proxy = "http://proxy.server:3128",
   secure = True
 )
 
+import cloudinary.uploader
+import cloudinary.api
 
-django_heroku.settings(locals())
